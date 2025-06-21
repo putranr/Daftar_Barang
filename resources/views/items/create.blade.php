@@ -1,13 +1,26 @@
 @extends('layout')
 
 @section('content')
-<h2>Tambah Sepatu Baru</h2>
-<form action="{{ route('items.store') }}" method="POST">
-    @csrf
-    Nama: <input type="text" name="name" value="{{ old('name') }}"><br>
-    Jumlah: <input type="number" name="quantity" value="{{ old('quantity') }}"><br>
-    Catatan: <input type="text" name="notes"><br>
-    <button type="submit">Simpan</button>
-</form>
-<a href="{{ route('items.index') }}">Kembali</a>
+<div class="card">
+    <div class="card-header">Tambah Sepatu Baru</div>
+    <div class="card-body">
+        <form action="{{ route('items.store') }}" method="POST">
+            @csrf
+            <div class="mb-3">
+                <label for="name" class="form-label">Nama Sepatu</label>
+                <input type="text" name="name" class="form-control" value="{{ old('name') }}">
+            </div>
+            <div class="mb-3">
+                <label for="quantity" class="form-label">Jumlah</label>
+                <input type="number" name="quantity" class="form-control" value="{{ old('quantity') }}">
+            </div>
+            <div class="mb-3">
+                <label for="notes" class="form-label">Catatan</label>
+                <input type="text" name="notes" class="form-control" value="{{ old('notes') }}">
+            </div>
+            <button type="submit" class="btn btn-success">Simpan</button>
+            <a href="{{ route('items.index') }}" class="btn btn-secondary">Kembali</a>
+        </form>
+    </div>
+</div>
 @endsection
