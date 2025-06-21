@@ -1,13 +1,26 @@
 @extends('layout')
 
 @section('content')
-<h2>Edit Sepatu</h2>
-<form action="{{ route('items.update', $item->id) }}" method="POST">
-    @csrf @method('PUT')
-    Nama: <input type="text" name="name" value="{{ $item->name }}"><br>
-    Jumlah: <input type="number" name="quantity" value="{{ $item->quantity }}"><br>
-    Catatan: <input type="text" name="notes" value="{{ $item->notes }}"><br>
-    <button type="submit">Update</button>
-</form>
-<a href="{{ route('items.index') }}">Kembali</a>
+<div class="card">
+    <div class="card-header">Edit Sepatu</div>
+    <div class="card-body">
+        <form action="{{ route('items.update', $item->id) }}" method="POST">
+            @csrf @method('PUT')
+            <div class="mb-3">
+                <label for="name" class="form-label">Nama Sepatu</label>
+                <input type="text" name="name" class="form-control" value="{{ $item->name }}">
+            </div>
+            <div class="mb-3">
+                <label for="quantity" class="form-label">Jumlah</label>
+                <input type="number" name="quantity" class="form-control" value="{{ $item->quantity }}">
+            </div>
+            <div class="mb-3">
+                <label for="notes" class="form-label">Catatan</label>
+                <input type="text" name="notes" class="form-control" value="{{ $item->notes }}">
+            </div>
+            <button type="submit" class="btn btn-primary">Update</button>
+            <a href="{{ route('items.index') }}" class="btn btn-secondary">Kembali</a>
+        </form>
+    </div>
+</div>
 @endsection
